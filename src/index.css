@@ -109,7 +109,7 @@ body {
 }
 
 .logo-banner {
-  max-width: 100%;
+  max-width: 90%;
   width: 700px;
 }
 
@@ -596,7 +596,7 @@ body {
   }
 
   .scroll-indicator {
-    margin-top: 32px;
+    margin-top: 2.9rem;
     gap: 16px;
   }
 
