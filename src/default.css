@@ -34,3 +34,12 @@ body {
 .audio-popup:hover {
     background-color: rgb(204, 204, 204);
 }
+/* ===== Responsivo ===== */
+@media (max-width: 600px) {
+    .audio-popup {
+        margin: 16px;
+        width: 48px;
+        height: 48px;
+        font-size: 1.4rem;
+    }
+}

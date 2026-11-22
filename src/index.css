@@ -420,3 +420,212 @@ body {
   .modal-overlay,
   .modal { animation: none; }
 }
+
+/* =========================================================
+   RESPONSIVO
+   Tudo abaixo só muda o visual em telas menores; no desktop
+   (acima de 1024px) o layout continua o mesmo de antes.
+   ========================================================= */
+
+body {
+  min-height: 100dvh;
+}
+
+/* vídeo de fundo fica atrás do conteúdo */
+.main {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.video-bg {
+  z-index: -1;
+}
+
+.header {
+  position: relative;
+  z-index: 10;
+}
+
+/* a palavra não quebra no meio; a linha só quebra entre palavras */
+.palavra {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* o CTA agora é <button>: mantém a fonte do site */
+.btn-cta {
+  font-family: inherit;
+}
+
+.logo-banner {
+  height: auto;
+}
+
+/* botão hambúrguer: escondido no desktop */
+.menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  color: #111;
+  background: rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.menu-toggle:hover {
+  background: rgba(0, 0, 0, 0.16);
+}
+
+.menu-toggle:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 3px;
+}
+
+/* --- desktop menor: aperta o menu para caber --- */
+@media (max-width: 1250px) {
+  .header {
+    margin: 1rem 1.5rem;
+  }
+
+  .logo-header img {
+    max-width: 200px;
+  }
+
+  .nav ul li {
+    padding: 0 1rem;
+  }
+}
+
+/* --- tablet e celular: menu vira hambúrguer --- */
+@media (max-width: 1024px) {
+  .header {
+    margin: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+
+  .nav {
+    gap: 12px;
+    overflow: visible;
+  }
+
+  .logo-header {
+    margin-right: auto;
+  }
+
+  .logo-header img {
+    display: block;
+    width: 150px;
+  }
+
+  .container-user {
+    padding: 6px 14px;
+    font-size: 1rem;
+  }
+
+  .container-user span {
+    max-width: 12ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav ul {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    z-index: 20;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 8px;
+    overflow: visible;
+    border-radius: 24px;
+    background: linear-gradient(180deg, #fff 0%, #f1f1f1 100%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  }
+
+  .nav ul.nav-links--aberto {
+    display: flex;
+  }
+
+  .nav ul li,
+  .nav ul li:nth-child(n) {
+    padding: 0;
+    border: 0;
+  }
+
+  .nav ul a {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    border-radius: 16px;
+  }
+
+  .nav ul a:hover {
+    background: rgba(0, 0, 0, 0.06);
+  }
+}
+
+/* --- celular --- */
+@media (max-width: 600px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .container p {
+    font-size: clamp(1.1rem, 4.6vw, 1.5rem);
+    margin: 20px 0;
+  }
+
+  .btn-cta {
+    padding: 14px 28px;
+    font-size: 1rem;
+  }
+
+  .scroll-indicator {
+    margin-top: 32px;
+    gap: 16px;
+  }
+
+  .modal-overlay {
+    padding: 16px;
+  }
+
+  .modal {
+    padding: 44px 20px 24px;
+    border-radius: 22px;
+  }
+
+  .modal__title {
+    font-size: 1.2rem;
+  }
+
+  .modal__button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* --- celulares bem pequenos --- */
+@media (max-width: 400px) {
+  .logo-header img {
+    width: 120px;
+  }
+
+  .container-user span {
+    max-width: 8ch;
+  }
+}
