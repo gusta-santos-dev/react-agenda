@@ -29,11 +29,45 @@ body {
     border: 3px rgb(152, 152, 152) solid;
     transition: .2s ease-in-out;
     cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;                /* Safari / iPhone */
+    -webkit-tap-highlight-color: transparent; /* tira o destaque ao tocar no celular */
+    touch-action: manipulation;               /* evita zoom com toque duplo */
 }
 
 .audio-popup:hover {
     background-color: rgb(204, 204, 204);
 }
+/* animação de pulsar: anel que se expande a partir do botão */
+.audio-popup::before,
+.audio-popup::after {
+    content: "";
+    position: absolute;
+    inset: -3px;               /* cobre a borda de 3px do botão */
+    border-radius: 50%;
+    border: 3px solid rgb(152, 152, 152);
+    opacity: 0;
+    pointer-events: none;
+    animation: audio-pulse 2s ease-out infinite;
+}
+
+.audio-popup::after {
+    animation-delay: 1s;       /* segundo anel, defasado */
+}
+
+@keyframes audio-pulse {
+    0%   { transform: scale(1);   opacity: 0.7; }
+    100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* respeita quem prefere menos animação */
+@media (prefers-reduced-motion: reduce) {
+    .audio-popup::before,
+    .audio-popup::after {
+        animation: none;
+    }
+}
+
 /* ===== Responsivo ===== */
 @media (max-width: 600px) {
     .audio-popup {

@@ -109,7 +109,7 @@ body {
 }
 
 .logo-banner {
-  max-width: 90%;
+  max-width: 100%;
   width: 700px;
 }
 
@@ -596,7 +596,7 @@ body {
   }
 
   .scroll-indicator {
-    margin-top: 2.9rem;
+    margin-top: 32px;
     gap: 16px;
   }
 
@@ -627,5 +627,67 @@ body {
 
   .container-user span {
     max-width: 8ch;
+  }
+}
+
+
+/* =========================================================
+   CONTAINER-USER: hover + pulsar
+   ========================================================= */
+
+/* espaço extra dentro do .nav (que tem overflow: hidden) para o
+   anel do pulso não ser cortado; a margem negativa mantém o layout igual */
+.nav {
+  padding: 14px;
+  margin: -14px;
+}
+
+.container-user {
+  position: relative;
+  transition: scale 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+/* anel pulsante (fica no ::after, assim não briga com o box-shadow do hover) */
+.container-user::after {
+  content: "";
+  position: absolute;
+  inset: -2px;                 /* cobre a borda de 2px */
+  border-radius: inherit;
+  pointer-events: none;
+  animation: user-pulse 2.4s ease-out infinite;
+}
+
+@keyframes user-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(120, 120, 120, 0.55); }
+  70%  { box-shadow: 0 0 0 12px rgba(120, 120, 120, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(120, 120, 120, 0); }
+}
+
+.container-user svg {
+  transition: transform 0.3s ease, background-color 0.25s ease;
+}
+
+/* hover só em dispositivos com mouse (evita "hover preso" no celular) */
+@media (hover: hover) {
+  .container-user:hover {
+    scale: 1.05;               /* 'scale' não conflita com o transform do GSAP */
+    filter: brightness(1.08);
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 10px 24px;
+  }
+
+  .container-user:hover svg {
+    transform: rotate(-10deg) scale(1.12);
+    background-color: #fff;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .container-user::after {
+    animation: none;
+  }
+
+  .container-user,
+  .container-user svg {
+    transition: none;
   }
 }
