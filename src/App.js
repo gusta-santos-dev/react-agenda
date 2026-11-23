@@ -107,15 +107,17 @@ export default function App() {
             opacity: 0,
             y: 30,
             duration: 2,
-            stagger: 0.5,
+            stagger: 0.2,
         })
 
         ScrollTrigger.create({
             animation: tl,
             trigger: '#proxima-secao',
-            start: 'top center',
-            end: '90% bottom',
-            scrub: true,
+            start: 'top 80%',
+            end: 'bottom bottom',
+            scrub: 1,
+            
+            
             once: true,
             toggleActions: 'play none none none'
         })
