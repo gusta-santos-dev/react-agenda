@@ -8,7 +8,7 @@ gsap.registerPlugin(useGSAP);
 
 const links = [
     { id: 'inicio', icone: faHouse, texto: 'Início' },
-    { id: 'recursos', icone: faChartSimple, texto: 'Recursos' },
+    { id: 'proxima-secao', icone: faChartSimple, texto: 'Recursos' },
     { id: 'sobre', icone: faCircleInfo, texto: 'Sobre' },
     { id: 'configuracoes', icone: faGear, texto: 'Configurações' },
 ];
