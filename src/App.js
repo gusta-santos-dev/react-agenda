@@ -115,7 +115,6 @@ export default function App() {
             trigger: '#proxima-secao',
             start: 'top center',
             end: '90% bottom',
-            markers: true,
             scrub: true,
             once: true,
             toggleActions: 'play none none none'
